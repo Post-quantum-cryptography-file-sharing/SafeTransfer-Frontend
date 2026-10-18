@@ -1,4 +1,4 @@
-import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios';
+import axios, { type AxiosError } from 'axios';
 
 export const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000',
@@ -8,26 +8,12 @@ export const apiClient = axios.create({
   },
 });
 
-let hasDispatchedUnauthorized = false;
-
-apiClient.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    return config;
-  },
-  (error: AxiosError) => {
-    return Promise.reject(error);
-  }
-);
-
 apiClient.interceptors.response.use(
-  (response) => {
-    hasDispatchedUnauthorized = false;
-    return response;
-  },
+  (response) => response,
   (error: AxiosError) => {
-    if (error.response?.status === 401 && !hasDispatchedUnauthorized) {
-      hasDispatchedUnauthorized = true;
-      window.dispatchEvent(new CustomEvent('auth:unauthorized'));
+    const isAuthPage = window.location.pathname === '/login' || window.location.pathname === '/register';
+    if (error.response?.status === 401 && !isAuthPage) {
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }

@@ -50,16 +50,17 @@ export function RegisterPage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-background px-4">
-            <div className="flex flex-row items-center gap-3 mb-6">
-                <img
-                    src="/safetransfer-logo.svg"
-                    alt="SafeTransfer"
-                    className="h-10 w-auto"
-                />
-                <span className="text-xl font-semibold">SafeTransfer</span>
-            </div>
-            <Card className="w-full max-w-md">
+        <div className="bg-background px-4 py-8">
+            <div className="flex flex-col items-center min-h-dvh justify-center">
+                <div className="flex flex-row items-center gap-3 mb-6">
+                    <img
+                        src="/safetransfer-logo.svg"
+                        alt="SafeTransfer"
+                        className="h-10 w-auto"
+                    />
+                    <span className="text-xl font-semibold">SafeTransfer</span>
+                </div>
+                <Card className="w-full max-w-md">
                 <CardHeader className="space-y-4">
                     <div className="space-y-1 text-center">
                         <CardTitle className="text-2xl">Create an account</CardTitle>
@@ -68,7 +69,7 @@ export function RegisterPage() {
                 </CardHeader>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <CardContent className="space-y-4">
-                        <div className="flex flex-row items-center gap-3 px-5 mt-3 border border-input rounded-md">
+                        <div className="flex flex-row items-center gap-3 p-3 border border-input rounded-md">
                             <StyledAvatar
                                 name={displayName || 'SafeTransfer'}
                             />
@@ -147,9 +148,10 @@ export function RegisterPage() {
                         </div>
                     </CardContent>
                 </form>
-            </Card>
-            <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm mt-6 text-center">
-                <span>A password reset can't recover files previously shared, keep it safe.</span>
+                </Card>
+                <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm mt-6 text-center">
+                    <span>A password reset can't recover files previously shared, keep it safe.</span>
+                </div>
             </div>
         </div>
     );
