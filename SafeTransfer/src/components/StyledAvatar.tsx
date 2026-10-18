@@ -21,8 +21,24 @@ export function StyledAvatar({ name, size = "default", className }: StyledAvatar
         <BoringAvatar
           size={sizeMap[size]}
           name={name || "SafeTransfer"}
-          variant="beam"
-          colors={["#00686c", "#32c2b9", "#edecb3", "#fad928", "#ff9915"]}
+          variant="marble"
+          colors={[
+              "#A78BFA",
+              "#F472B6",
+              "#C084FC",
+              "#FB7185",
+              "#818CF8",
+              "#E879F9",
+              "#FDBA74",
+              "#FACC15",
+              "#4ADE80",
+              "#2DD4BF",
+              "#F9A8D4",
+              "#8B5CF6",
+              "#FB923C",
+              "#FDE047",
+              "#34D399",
+          ]}
         />
       </AvatarFallback>
     </Avatar>
