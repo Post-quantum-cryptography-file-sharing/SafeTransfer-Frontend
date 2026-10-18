@@ -1,5 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, type ReactNode } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
+import { createContext, useContext, useMemo, type ReactNode } from 'react';
 import { useCurrentUser } from '../hooks/queries/useCurrentUser';
 import type { UserResponse } from '../types/auth.types';
 
@@ -17,28 +16,16 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const queryClient = useQueryClient();
-  const { data: user, isLoading, refetch, isError } = useCurrentUser();
-
-  useEffect(() => {
-    const handleUnauthorized = () => {
-      queryClient.clear();
-    };
-
-    window.addEventListener('auth:unauthorized', handleUnauthorized);
-    return () => {
-      window.removeEventListener('auth:unauthorized', handleUnauthorized);
-    };
-  }, [queryClient]);
+  const { data: user, isPending, refetch, isSuccess } = useCurrentUser();
 
   const value = useMemo<AuthContextValue>(
     () => ({
       user: user ?? null,
-      isLoading,
-      isAuthenticated: !!user && !isError,
+      isLoading: isPending,
+      isAuthenticated: isSuccess && !!user,
       refetchUser: refetch,
     }),
-    [user, isLoading, isError, refetch]
+    [user, isPending, isSuccess, refetch]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -89,7 +89,7 @@ export function LoginPage() {
                         <Button type="submit" className="w-full p-5" disabled={login.isPending}>
                             {login.isPending ? 'Signing in...' : 'Sign in'}
                         </Button>
-                        <div className="flex justify-center py-3">
+                        <div className="flex justify-center pt-3">
                             <p className="text-sm text-muted-foreground">
                                 No account yet?{' '}
                                 <Link to="/register"

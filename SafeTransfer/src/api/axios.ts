@@ -8,6 +8,8 @@ export const apiClient = axios.create({
   },
 });
 
+let hasDispatchedUnauthorized = false;
+
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     return config;
@@ -18,9 +20,13 @@ apiClient.interceptors.request.use(
 );
 
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    hasDispatchedUnauthorized = false;
+    return response;
+  },
   (error: AxiosError) => {
-    if (error.response?.status === 401) {
+    if (error.response?.status === 401 && !hasDispatchedUnauthorized) {
+      hasDispatchedUnauthorized = true;
       window.dispatchEvent(new CustomEvent('auth:unauthorized'));
     }
     return Promise.reject(error);
