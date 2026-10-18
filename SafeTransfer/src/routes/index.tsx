@@ -4,8 +4,8 @@ import { PublicRoute } from './PublicRoute';
 import { LoginPage } from '@/pages/LoginPage';
 import { RegisterPage } from '@/pages/RegisterPage';
 import { DashboardLayout } from '@/components/DashboardLayout';
+import {MyFilesPage} from "@/pages/MyFilesPage.tsx";
 
-const MyFilesPage = () => <div>My Files</div>;
 const SharedFilesPage = () => <div>Shared With Me</div>;
 const BatchDetailsPage = () => <div>Batch Details</div>;
 const SettingsPage = () => <div>Settings</div>;

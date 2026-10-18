@@ -2,7 +2,6 @@ import {useState, useRef} from "react";
 import {useDebounce} from "use-debounce";
 import {X, UserPlus, AlertTriangle} from "lucide-react";
 import {Input} from "@/components/ui/input";
-import {Badge} from "@/components/ui/badge";
 import {StyledAvatar} from "@/components/StyledAvatar";
 import {useUserSearch} from "@/hooks/queries/useUserSearch";
 import type {UserSummary} from "@/types/user.types";

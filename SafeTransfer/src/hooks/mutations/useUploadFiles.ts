@@ -1,13 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { fileApi } from '../../api/file.api';
+import { fileApi, type UploadFilesOptions } from '../../api/file.api';
 import { queryKeys } from '../queryKeys';
-import type { UploadFilesRequest } from '../../types/file.types';
 
 export function useUploadFiles() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: UploadFilesRequest) => fileApi.uploadFiles(data),
+    mutationFn: (options: UploadFilesOptions) => fileApi.uploadFiles(options),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.myBatches });
     },
