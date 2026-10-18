@@ -188,6 +188,7 @@ export function FilesTable() {
         initialState: {
             pagination: {
                 pageSize: 7,
+                pageIndex: 0
             },
         },
         state: {
