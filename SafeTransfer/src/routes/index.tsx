@@ -2,8 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
 import { PublicRoute } from './PublicRoute';
 import { LoginPage } from '@/pages/LoginPage';
+import {RegisterPage} from "@/pages/RegisterPage.tsx";
 
-const RegisterPage = () => <div>Register Page</div>;
 const DashboardPage = () => <div>Dashboard</div>;
 const MyFilesPage = () => <div>My Files</div>;
 const SharedFilesPage = () => <div>Shared With Me</div>;
