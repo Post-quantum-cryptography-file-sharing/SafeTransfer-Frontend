@@ -22,11 +22,13 @@ import {useLogout} from '@/hooks/mutations/useLogout';
 import {useSharedBatches} from '@/hooks/queries/useSharedBatches';
 import {Badge} from '@/components/ui/badge';
 import {StyledAvatar} from "@/components/StyledAvatar.tsx";
+import {useUploadDialog} from "@/contexts/UploadDialogContext.tsx";
 
 export function Navbar() {
     const [open, setOpen] = useState(false);
     const {user} = useAuth();
     const {data: sharedBatches} = useSharedBatches();
+    const {open: openUploadDialog} = useUploadDialog();
     const sharedCount = sharedBatches?.length ?? 0;
     const location = useLocation();
     const navigate = useNavigate();
@@ -72,7 +74,7 @@ export function Navbar() {
                     </div>
 
                     <div className="hidden md:flex items-center gap-3">
-                        <Button onClick={() => navigate('/upload')}>
+                        <Button onClick={() => openUploadDialog()}>
                             <Upload className="size-4"/>
                             Upload
                         </Button>
@@ -155,7 +157,7 @@ export function Navbar() {
                                         variant={isActive('/upload') ? 'secondary' : 'ghost'}
                                         className="justify-start"
                                         onClick={() => {
-                                            navigate('/upload');
+                                            openUploadDialog();
                                             closeSheet();
                                         }}
                                     >

@@ -7,7 +7,6 @@ import { DashboardLayout } from '@/components/DashboardLayout';
 
 const MyFilesPage = () => <div>My Files</div>;
 const SharedFilesPage = () => <div>Shared With Me</div>;
-const UploadPage = () => <div>Upload Files</div>;
 const BatchDetailsPage = () => <div>Batch Details</div>;
 const SettingsPage = () => <div>Settings</div>;
 
@@ -23,7 +22,6 @@ export function AppRoutes() {
         <Route element={<DashboardLayout />}>
           <Route path="/files" element={<MyFilesPage />} />
           <Route path="/shared" element={<SharedFilesPage />} />
-          <Route path="/upload" element={<UploadPage />} />
           <Route path="/batch/:id" element={<BatchDetailsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Route>
