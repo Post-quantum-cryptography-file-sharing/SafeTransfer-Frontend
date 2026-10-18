@@ -185,6 +185,11 @@ export function FilesTable() {
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        initialState: {
+            pagination: {
+                pageSize: 7,
+            },
+        },
         state: {
             globalFilter,
         },
