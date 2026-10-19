@@ -7,7 +7,7 @@ export function PublicRoute() {
 
     if (isLoading) {
         return (
-            <div className="grid place-content-center">
+            <div className="grid min-h-svh place-content-center">
                 <Spinner/>
             </div>
         );

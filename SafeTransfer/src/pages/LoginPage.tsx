@@ -37,7 +37,7 @@ export function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-background px-4">
+        <div className="min-h-dvh flex flex-col items-center justify-center bg-background px-4">
             <div className="flex flex-row items-center gap-3 mb-6">
                 <img
                     src="/safetransfer-logo.svg"

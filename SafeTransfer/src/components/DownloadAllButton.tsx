@@ -1,8 +1,9 @@
 import {useState} from "react";
 import JSZip from "jszip";
-import {Archive, Loader2} from "lucide-react";
+import {Archive} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 import {fileApi} from "@/api/file.api.ts";
+import {Spinner} from "@/components/ui/spinner.tsx";
 
 interface FileToDownload {
     id: string;
@@ -59,7 +60,7 @@ export function DownloadAllButton({files, zipFileName, disabled}: DownloadAllBut
         >
             {isDownloading ? (
                 <div className="flex flex-row gap-2 items-center">
-                    <Loader2 className="size-4 animate-spin" />
+                    <Spinner />
                     {progress}%
                 </div>
             ) : (

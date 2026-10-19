@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Download, Inbox, Loader2} from "lucide-react";
+import {Download, Inbox} from "lucide-react";
 import {Card, CardContent, CardHeader} from "@/components/ui/card.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {Skeleton} from "@/components/ui/skeleton.tsx";
@@ -11,6 +11,7 @@ import {Separator} from "@/components/ui/separator.tsx";
 import {ExpiresAtBadge} from "@/components/ExpiresAtBadge.tsx";
 import {getFileIcon} from "@/lib/getFileIcon.tsx";
 import {fileApi} from "@/api/file.api.ts";
+import {Spinner} from "@/components/ui/spinner.tsx";
 
 function DownloadButton({fileId, fileName, disabled}: {fileId: string; fileName: string; disabled?: boolean}) {
     const [isDownloading, setIsDownloading] = useState(false);
@@ -42,7 +43,7 @@ function DownloadButton({fileId, fileName, disabled}: {fileId: string; fileName:
             disabled={isDownloading || disabled}
         >
             {isDownloading ? (
-                <Loader2 className="size-4 animate-spin" />
+                <Spinner />
             ) : (
                 <div className="flex flex-row gap-2 items-center">
                     <Download className="size-4" />
