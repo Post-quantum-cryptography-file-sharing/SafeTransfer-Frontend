@@ -1,5 +1,6 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import {Spinner} from "@/components/ui/spinner.tsx";
 
 export function ProtectedRoute() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -7,8 +8,8 @@ export function ProtectedRoute() {
 
   if (isLoading) {
     return (
-      <div className="auth-loading">
-        <p>Loading...</p>
+      <div className="grid place-content-center">
+          <Spinner />
       </div>
     );
   }

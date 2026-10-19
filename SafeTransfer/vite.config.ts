@@ -5,14 +5,24 @@ import { defineConfig } from 'vite'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] }),
-    tailwindcss(),
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(import.meta.dirname, './src'),
+    plugins: [
+        react(),
+        babel({ presets: [reactCompilerPreset()] }),
+        tailwindcss(),
+    ],
+    resolve: {
+        alias: {
+            '@': path.resolve(import.meta.dirname, './src'),
+        },
     },
-  },
+    server: {
+        allowedHosts: ['.trycloudflare.com'],
+        proxy: {
+            '/api': {
+                target: 'https://localhost:7244',
+                changeOrigin: true,
+                secure: false,
+            },
+        },
+    },
 })
