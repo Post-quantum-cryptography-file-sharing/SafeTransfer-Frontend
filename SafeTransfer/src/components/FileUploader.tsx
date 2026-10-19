@@ -63,10 +63,19 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
             "application/zip": [".zip"],
             "application/x-zip-compressed": [".zip"],
             "application/x-compressed": [".zip"],
+            "application/x-rar-compressed": [".rar"],
+            "application/x-7z-compressed": [".7z"],
             "application/vnd.ms-excel": [".xls"],
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"],
             "application/msword": [".doc"],
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
+            "image/jpeg": [".jpg", ".jpeg"],
+            "image/png": [".png"],
+            "image/gif": [".gif"],
+            "image/webp": [".webp"],
+            "image/svg+xml": [".svg"],
+            "image/bmp": [".bmp"],
+            "image/x-icon": [".ico"],
         },
         multiple: true,
     });
@@ -122,7 +131,7 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
                         {isDragActive ? "Drop documents here..." : "Drop files here, or click to browse"}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                        Supports PDFs, Word, Excel files and ZIP Archives
+                        Supports PDFs, Word, Excel, images and archives
                     </p>
                 </div>
             </div>

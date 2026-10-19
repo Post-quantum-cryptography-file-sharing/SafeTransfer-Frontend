@@ -15,7 +15,7 @@ interface UploadDialogProps {
 export function UploadDialog({isOpen, onClose}: UploadDialogProps) {
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-            <DialogContent>
+            <DialogContent className="sm:max-w-lg">
                 <DialogHeader>
                     <DialogTitle>Upload Files</DialogTitle>
                     <DialogDescription>

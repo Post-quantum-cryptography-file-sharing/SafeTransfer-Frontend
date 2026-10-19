@@ -20,6 +20,7 @@
     "boring-avatars": "^2.0.4",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.0",
+    "jszip": "^3.10.2",
     "lucide-react": "^1.59.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
