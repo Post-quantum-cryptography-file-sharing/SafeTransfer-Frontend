@@ -2,12 +2,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
 import { PublicRoute } from './PublicRoute';
 import { LoginPage } from '@/pages/LoginPage';
-import {RegisterPage} from "@/pages/RegisterPage.tsx";
+import { RegisterPage } from '@/pages/RegisterPage';
+import { DashboardLayout } from '@/components/DashboardLayout';
+import {MyFilesPage} from "@/pages/MyFilesPage.tsx";
 
-const DashboardPage = () => <div>Dashboard</div>;
-const MyFilesPage = () => <div>My Files</div>;
 const SharedFilesPage = () => <div>Shared With Me</div>;
-const UploadPage = () => <div>Upload Files</div>;
 const BatchDetailsPage = () => <div>Batch Details</div>;
 const SettingsPage = () => <div>Settings</div>;
 
@@ -20,16 +19,16 @@ export function AppRoutes() {
       </Route>
 
       <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/files" element={<MyFilesPage />} />
-        <Route path="/shared" element={<SharedFilesPage />} />
-        <Route path="/upload" element={<UploadPage />} />
-        <Route path="/batch/:id" element={<BatchDetailsPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/files" element={<MyFilesPage />} />
+          <Route path="/shared" element={<SharedFilesPage />} />
+          <Route path="/batch/:id" element={<BatchDetailsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Route>
       </Route>
 
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/" element={<Navigate to="/files" replace />} />
+      <Route path="*" element={<Navigate to="/files" replace />} />
     </Routes>
   );
 }

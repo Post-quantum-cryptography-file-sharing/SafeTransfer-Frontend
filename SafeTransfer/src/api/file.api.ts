@@ -1,8 +1,13 @@
 import apiClient from './axios';
 import type { BatchResponse, SharedBatchResponse, UploadFilesRequest } from '../types/file.types';
 
+export interface UploadFilesOptions {
+  data: UploadFilesRequest;
+  onProgress?: (progress: number) => void;
+}
+
 export const fileApi = {
-  uploadFiles: async (data: UploadFilesRequest): Promise<BatchResponse> => {
+  uploadFiles: async ({ data, onProgress }: UploadFilesOptions): Promise<BatchResponse> => {
     const formData = new FormData();
 
     data.files.forEach((file) => {
@@ -20,6 +25,12 @@ export const fileApi = {
     const response = await apiClient.post<BatchResponse>('/api/file', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+      },
+      onUploadProgress: (progressEvent) => {
+        if (progressEvent.total && onProgress) {
+          const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          onProgress(progress);
+        }
       },
     });
     return response.data;
