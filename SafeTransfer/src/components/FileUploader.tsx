@@ -169,6 +169,14 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
 
             <FieldGroup>
                 <Field>
+                    <FieldLabel>Recipients</FieldLabel>
+                    <RecipientSelector
+                        recipients={recipients}
+                        onChange={setRecipients}
+                    />
+                </Field>
+
+                <Field>
                     <FieldLabel>Title</FieldLabel>
                     <Input
                         placeholder="Holiday photos"
@@ -191,14 +199,6 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
                     <FieldDescription>
                         Files are deleted on {formatExpirationDate(expirationDate)}
                     </FieldDescription>
-                </Field>
-
-                <Field>
-                    <FieldLabel>Recipients</FieldLabel>
-                    <RecipientSelector
-                        recipients={recipients}
-                        onChange={setRecipients}
-                    />
                 </Field>
             </FieldGroup>
 
