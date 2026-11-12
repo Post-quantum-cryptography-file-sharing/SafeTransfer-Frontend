@@ -136,6 +136,9 @@ export function RecipientSelector({recipients, onChange}: RecipientSelectorProps
                                     <span className="text-sm font-medium truncate">
                                         {user.displayName}
                                     </span>
+                                    <span className="text-xs text-muted-foreground truncate">
+                                        {user.email}
+                                    </span>
                                 </div>
                             </button>
                         ))}

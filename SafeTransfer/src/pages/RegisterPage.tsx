@@ -50,8 +50,7 @@ export function RegisterPage() {
     };
 
     return (
-        <div className="bg-background px-4 py-8">
-            <div className="flex flex-col items-center min-h-dvh justify-center">
+        <div className="min-h-dvh flex flex-col items-center justify-center bg-background px-4 py-8">
                 <div className="flex flex-row items-center gap-3 mb-6">
                     <img
                         src="/safetransfer-logo.svg"
@@ -152,7 +151,6 @@ export function RegisterPage() {
                 <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm mt-6 text-center">
                     <span>A password reset can't recover files previously shared, keep it safe.</span>
                 </div>
-            </div>
         </div>
     );
 }

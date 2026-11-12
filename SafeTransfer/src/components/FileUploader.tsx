@@ -63,10 +63,19 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
             "application/zip": [".zip"],
             "application/x-zip-compressed": [".zip"],
             "application/x-compressed": [".zip"],
+            "application/x-rar-compressed": [".rar"],
+            "application/x-7z-compressed": [".7z"],
             "application/vnd.ms-excel": [".xls"],
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"],
             "application/msword": [".doc"],
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
+            "image/jpeg": [".jpg", ".jpeg"],
+            "image/png": [".png"],
+            "image/gif": [".gif"],
+            "image/webp": [".webp"],
+            "image/svg+xml": [".svg"],
+            "image/bmp": [".bmp"],
+            "image/x-icon": [".ico"],
         },
         multiple: true,
     });
@@ -112,25 +121,25 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
         <div className="space-y-4">
             <div
                 {...getRootProps()}
-                className={`border-2 border-dashed rounded-lg p-5 text-center cursor-pointer transition-colors
+                className={`border-2 border-dashed rounded-lg p-3 sm:p-5 text-center cursor-pointer transition-colors
           ${isDragActive ? "border-primary bg-primary/5" : "border-muted-foreground/20 hover:border-primary/50"}`}
             >
                 <input {...getInputProps()} />
-                <div className="flex flex-col items-center justify-center gap-2">
-                    <UploadCloud className="h-8 w-8 text-muted-foreground"/>
+                <div className="flex flex-col items-center justify-center gap-1 sm:gap-2">
+                    <UploadCloud className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground"/>
                     <p className="text-sm font-medium">
                         {isDragActive ? "Drop documents here..." : "Drop files here, or click to browse"}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                        Supports PDFs, Word, Excel files and ZIP Archives
+                        Supports PDFs, Word, Excel, images and archives
                     </p>
                 </div>
             </div>
 
             {selectedFiles.length > 0 && (
-                <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                <div className="space-y-2 max-h-32 sm:max-h-56 overflow-y-auto pr-1">
                     {selectedFiles.map((file, idx) => (
-                        <Attachment key={`${file.name}-${idx}`} state="done" className="w-full">
+                        <Attachment key={`${file.name}-${idx}`} state="done" size="sm" className="w-full">
                             <AttachmentMedia>
                                 {getFileIcon(file.name)}
                             </AttachmentMedia>
@@ -160,6 +169,14 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
 
             <FieldGroup>
                 <Field>
+                    <FieldLabel>Recipients</FieldLabel>
+                    <RecipientSelector
+                        recipients={recipients}
+                        onChange={setRecipients}
+                    />
+                </Field>
+
+                <Field>
                     <FieldLabel>Title</FieldLabel>
                     <Input
                         placeholder="Holiday photos"
@@ -182,14 +199,6 @@ export function FileUploader({onSuccess}: FileUploaderProps) {
                     <FieldDescription>
                         Files are deleted on {formatExpirationDate(expirationDate)}
                     </FieldDescription>
-                </Field>
-
-                <Field>
-                    <FieldLabel>Recipients</FieldLabel>
-                    <RecipientSelector
-                        recipients={recipients}
-                        onChange={setRecipients}
-                    />
                 </Field>
             </FieldGroup>
 

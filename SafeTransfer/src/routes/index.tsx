@@ -5,10 +5,9 @@ import { LoginPage } from '@/pages/LoginPage';
 import { RegisterPage } from '@/pages/RegisterPage';
 import { DashboardLayout } from '@/components/DashboardLayout';
 import {MyFilesPage} from "@/pages/MyFilesPage.tsx";
+import {SharedWithMePage} from "@/pages/SharedWithMePage.tsx";
 
-const SharedFilesPage = () => <div>Shared With Me</div>;
 const BatchDetailsPage = () => <div>Batch Details</div>;
-const SettingsPage = () => <div>Settings</div>;
 
 export function AppRoutes() {
   return (
@@ -21,9 +20,8 @@ export function AppRoutes() {
       <Route element={<ProtectedRoute />}>
         <Route element={<DashboardLayout />}>
           <Route path="/files" element={<MyFilesPage />} />
-          <Route path="/shared" element={<SharedFilesPage />} />
+          <Route path="/shared" element={<SharedWithMePage />} />
           <Route path="/batch/:id" element={<BatchDetailsPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
         </Route>
       </Route>
 
