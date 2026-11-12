@@ -6,8 +6,7 @@ import { RegisterPage } from '@/pages/RegisterPage';
 import { DashboardLayout } from '@/components/DashboardLayout';
 import {MyFilesPage} from "@/pages/MyFilesPage.tsx";
 import {SharedWithMePage} from "@/pages/SharedWithMePage.tsx";
-
-const BatchDetailsPage = () => <div>Batch Details</div>;
+import {BatchDetailsPage} from "@/pages/BatchDetailsPage.tsx";
 
 export function AppRoutes() {
   return (

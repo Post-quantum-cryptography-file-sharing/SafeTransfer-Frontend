@@ -27,6 +27,7 @@ import {AvatarGroup} from "@/components/ui/avatar.tsx";
 import {StyledAvatar} from "@/components/StyledAvatar.tsx";
 import {useUploadDialog} from "@/contexts/UploadDialogContext";
 import {ExpiresAtBadge} from "@/components/ExpiresAtBadge.tsx";
+import {formatDate} from "@/lib/formatDate.ts";
 
 function ManageButton({batchId}: { batchId: string }) {
     const navigate = useNavigate()
@@ -90,8 +91,7 @@ const columns: LegacyColumnDef<BatchResponse>[] = [
         accessorKey: "createdAt",
         header: "Uploaded",
         cell: ({row}) => {
-            const date = new Date(row.getValue("createdAt"))
-            return date.toLocaleDateString("en-GB", {day: "numeric", month: "short"})
+            return formatDate(row.getValue<string>("createdAt"), {day: "numeric", month: "short"})
         },
     },
     {
